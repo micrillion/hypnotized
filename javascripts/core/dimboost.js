@@ -1,14 +1,14 @@
 function getDimensionBoostPower() {
   if (player.currentChallenge == "challenge11" || player.currentChallenge == "postc1") return Decimal.fromNumber(1);
 
-  var ret = 2
-  if (player.infinityUpgrades.includes("resetMult")) ret = 2.5
-  if (player.challenges.includes("postc7")) ret = 4
-  if (player.currentChallenge == "postc7" || player.timestudy.studies.includes(81)) ret = 10
+  var ret = 3
+  if (player.infinityUpgrades.includes("resetMult")) ret = 3.5
+  if (player.challenges.includes("postc7")) ret = 6
+  if (player.currentChallenge == "postc7" || player.timestudy.studies.includes(81)) ret = 15
 
-  if (player.achievements.includes("r101")) ret = ret*1.01
-  if (player.timestudy.studies.includes(83)) ret = Decimal.pow(1.0004, player.totalTickGained).min(1e30).times(ret);
-  if (player.timestudy.studies.includes(231)) ret = Decimal.pow(player.resets, 0.3).times(ret)
+  if (player.achievements.includes("r101")) ret = ret*1.05
+  if (player.timestudy.studies.includes(83)) ret = Decimal.pow(1.0004, player.totalTickGained).min(1e35).times(ret);
+  if (player.timestudy.studies.includes(231)) ret = Decimal.pow(player.resets, 0.35).times(ret)
   return Decimal.fromValue(ret)
 }
 
@@ -29,7 +29,7 @@ function softReset(bulk) {
       sixthCost: new Decimal(1e13),
       seventhCost: new Decimal(1e18),
       eightCost: new Decimal(1e24),
-      firstAmount: new Decimal(0),
+      firstAmount: new Decimal(10),
       secondAmount: new Decimal(0),
       thirdAmount: new Decimal(0),
       fourthAmount: new Decimal(0),
